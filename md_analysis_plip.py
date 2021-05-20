@@ -6,6 +6,8 @@ Melchor Sanchez-Martinex,2021
 import subprocess
 import shlex
 import pytraj as pt
+import shutil
+import glob
 
 def run_command(command):
     createPath('./logs')
@@ -25,7 +27,6 @@ traj=pt.iterload('target_ligand_solvent-w-MD.dcd', top='target_ligand_solvent\
 .prmtop', frame_slice=[(0, 100, 10),])
 traj=traj.strip(':WAT,:Na+')
 
-
 count=0
 for frame in traj:
     count=count+1
@@ -36,6 +37,5 @@ for frame in traj:
     #Running PLIP externally
     plip=('plipcmd -f ' + trajectory_frame'+str(count)+'.pdb -t')
     run_command(plip)
-
-
-#Collecting all the generated PLIP reports and parsing them one by one
+    #Reaname the PLIP generic report name
+    shutil.copy('report.txt', trajectory_frame'+str(count)+'.txt',)
