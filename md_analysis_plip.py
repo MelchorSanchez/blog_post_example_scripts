@@ -7,7 +7,6 @@ import subprocess
 import shlex
 import pytraj as pt
 import shutil
-import glob
 
 def run_command(command):
     createPath('./logs')
