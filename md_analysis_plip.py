@@ -21,16 +21,21 @@ def run_command(command):
     return rc
 
 #Load the first 100 frames of the trajectory from 10 to 10
-traj=pt.iterload('/home/melchor/science/papers/paper_laura/test/target_ligand_\
-solvent-w-MD.dcd', top='/home/melchor/science/papers/paper_laura/test/\
-target_ligand_solvent.prmtop', frame_slice=[(0, 100, 10),])
+traj=pt.iterload('target_ligand_solvent-w-MD.dcd', top='target_ligand_solvent\
+.prmtop', frame_slice=[(0, 100, 10),])
 traj=traj.strip(':WAT,:Na+')
 
 
 count=0
 for frame in traj:
     count=count+1
+    #Writing each frame as a new PDB file
     pt.write_traj('trajectory_frame'+str(count)+'.pdb', traj=traj, overwrite=True)
+    #Writing each frame to the same PDB file
     pt.write_traj('trajectory.pdb', traj=traj, overwrite=True)
+    #Running PLIP externally
     plip=('plipcmd -f ' + trajectory_frame'+str(count)+'.pdb -t')
     run_command(plip)
+
+
+#Collecting all the generated PLIP reports and parsing them one by one
