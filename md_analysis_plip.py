@@ -1,8 +1,11 @@
+"""
+Small script to test PLIP analysis over an MD
+
+Melchor Sanchez-Martinex,2021
+"""
+import subprocess
+import shlex
 import pytraj as pt
-import seaborn as sns
-import pylab as plt
-import numpy as np
-sns.set()
 
 def run_command(command):
     createPath('./logs')
@@ -29,6 +32,5 @@ for frame in traj:
     count=count+1
     pt.write_traj('trajectory_frame'+str(count)+'.pdb', traj=traj, overwrite=True)
     pt.write_traj('trajectory.pdb', traj=traj, overwrite=True)
-
-plip=('')
-run_command(plip)
+    plip=('plipcmd -f ' + trajectory_frame'+str(count)+'.pdb -t')
+    run_command(plip)
