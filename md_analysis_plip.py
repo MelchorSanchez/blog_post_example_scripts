@@ -39,8 +39,8 @@ for frame in traj:
     #Writing each frame to the same PDB file
     pt.write_traj('trajectory.pdb', traj=traj, overwrite=True)
     #Running PLIP externally. Output (x)xml and (t)txt reports
-    plip=('plipcmd -f ' + trajectory_frame'+str(count)+'.pdb -xt')
+    plip=('plipcmd -f  trajectory_frame'+str(count)+'.pdb -xt')
     run_command(plip)
     #Reaname the PLIP generic report name
-    shutil.copy('report.txt', trajectory_frame'+str(count)+'.txt',)
-    shutil.copy('report.xml', trajectory_frame'+str(count)+'.xml',)
+    shutil.copy('report.txt', 'trajectory_frame'+str(count)+'.txt',)
+    shutil.copy('report.xml', 'trajectory_frame'+str(count)+'.xml',)
