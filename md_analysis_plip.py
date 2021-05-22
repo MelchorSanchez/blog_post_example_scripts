@@ -3,10 +3,15 @@ Small script to test PLIP analysis over an MD
 
 Melchor Sanchez-Martinex,2021
 """
+import os
 import subprocess
 import shlex
 import pytraj as pt
 import shutil
+
+def createPath(path):
+    if not os.path.isdir(path):
+        os.mkdir(path)
 
 def run_command(command):
     createPath('./logs')
@@ -33,9 +38,9 @@ for frame in traj:
     pt.write_traj('trajectory_frame'+str(count)+'.pdb', traj=traj, overwrite=True)
     #Writing each frame to the same PDB file
     pt.write_traj('trajectory.pdb', traj=traj, overwrite=True)
-    #Running PLIP externally. Output (x)xml and (t)txt reports as well as
-    # (p) png image and (y) pse pymol session.
-    plip=('plipcmd -f ' + trajectory_frame'+str(count)+'.pdb -pyxt')
+    #Running PLIP externally. Output (x)xml and (t)txt reports
+    plip=('plipcmd -f ' + trajectory_frame'+str(count)+'.pdb -xt')
     run_command(plip)
     #Reaname the PLIP generic report name
     shutil.copy('report.txt', trajectory_frame'+str(count)+'.txt',)
+    shutil.copy('report.xml', trajectory_frame'+str(count)+'.xml',)
