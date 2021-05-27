@@ -1,46 +1,27 @@
 """
 Small script to test PLIP analysis over an MD
 
-Melchor Sanchez-Martinex,2021
+Melchor Sanchez-Martinez,2021
 """
 import os
-import subprocess
+from subprocess import call
 import shlex
-import pytraj as pt
+import mdtraj as md
 import shutil
 
-def createPath(path):
-    if not os.path.isdir(path):
-        os.mkdir(path)
 
-def run_command(command):
-    createPath('./logs')
-    process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE)
-    while True:
-        output = process.stdout.readline()
-        print (output)
-        if output == '' and process.poll() is not None:
-            break
-        if output:
-            print (output.strip())
-    rc = process.poll()
-    return rc
-
-#Load the first 100 frames of the trajectory from 10 to 10
-traj=pt.iterload('target_ligand_solvent-w-MD.dcd', top='target_ligand_solvent\
-.prmtop', frame_slice=[(0, 100, 10),])
-traj=traj.strip(':WAT,:Na+')
-
+#Load the trajectory
+traj=md.load('target_ligand_solvent-w-MD.dcd', top='target_ligand_solvent.pdb')
+traj=traj.remove_solvent() #To simplify and accelerate analysis
+traj_reduced=traj[::int(traj.n_frames/10)] #To simplify and accelerate the
+#analysis I only selct 10 frames from the MD
 count=0
-for frame in traj:
-    count=count+1
-    #Writing each frame as a new PDB file
-    pt.write_traj('trajectory_frame'+str(count)+'.pdb', traj=traj, overwrite=True)
-    #Writing each frame to the same PDB file
-    pt.write_traj('trajectory.pdb', traj=traj, overwrite=True)
+for frame in traj_reduced:# Saving each frame as a single PDB file
+    count+=1
+    frame.save('traj_frame'+str(count)+'.pdb')
     #Running PLIP externally. Output (x)xml and (t)txt reports
-    plip=('plipcmd -f  trajectory_frame'+str(count)+'.pdb -xt')
-    run_command(plip)
+    plip=('plipcmd.py -f  traj_frame'+str(count)+'.pdb --model 0 -xt')
+    call(plip.split())
     #Reaname the PLIP generic report name
-    shutil.copy('report.txt', 'trajectory_frame'+str(count)+'.txt',)
-    shutil.copy('report.xml', 'trajectory_frame'+str(count)+'.xml',)
+    shutil.copy('report.txt', 'traj_frame'+str(count)+'.txt')
+    shutil.copy('report.xml', 'traj_frame'+str(count)+'.xml')
