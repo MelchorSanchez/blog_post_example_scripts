@@ -1,5 +1,5 @@
 """
-Small example to calculate RESP charges from a SDF file cominf from docking
+Small example to calculate RESP charges from a SDF file coming from docking
 and addition to antechamber.
 
 Inspired from Psikit resp charges calculation example and iwatobipen blog post
@@ -68,7 +68,7 @@ molecule_df = pd.DataFrame(res)
 ####Adding RESP charges###
 addRESP('metformin.mol2','metformin-resp.mol2')
 """
-To perform MD simulaitons with gromacs using FFs from the Amber family
+To perform MD simulations with gromacs using FFs from the Amber family
 an easy option to parameterize organic molecules, not included as standard
 residues in the FFs is to do it taking advantage from AmberTools. The
 combination of antechamber, parmchk and leap make the work.
@@ -85,7 +85,7 @@ mol2 -o metformin.frcmod"
 call(parmchk.split())
 
 #The first lines can be deleted. As there is none protein in the system and
-#the smallmolecule is patrateterized from scratch fb15 and amino94 that are used
+#the smallmolecule is parameteterized from scratch fb15 and amino94 that are used
 #to model proteins are not needed. Same for gaff that is used to model known
 #small organic molecules and also same for the ions library, as there are not
 #ions in the system. However for modelling a protein-ligand complex are need
