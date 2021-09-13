@@ -1,0 +1,57 @@
+Electrostatic potential parameters
+
+Grid information (see 1_default_grid.dat in Angstrom)
+    Number of grid points:            876
+
+Quantum electrostatic potential (see 1_default_grid_esp.dat)
+
+Constraints
+    Charge constraints
+        Total charge of  -0.20869151 on the set   1
+        Total charge of   0.36269262 on the set   4
+        Total charge of   0.73256493 on the set  11
+        Total charge of  -0.99719193 on the set  12
+        Total charge of   0.37797560 on the set  13
+        Total charge of  -0.72481277 on the set  14
+        Total charge of  -0.93183328 on the set  15
+        Total charge of  -0.90741789 on the set  16
+        Total charge of   0.93939445 on the set  17
+        Total charge of   0.39531866 on the set  18
+        Total charge of   0.41413482 on the set  19
+        Total charge of   0.38397818 on the set  20
+    Equality constraints
+        Equal charges on atoms
+                                  5   6   7
+                                  8   9  10
+
+Restraint
+    Hyperbolic restraint to a charge of zero
+    Hydrogen atoms are not restrained
+    resp_a:                           0.0010
+    resp_b:                           0.1000
+
+Fit
+
+Electrostatic Potential Charges
+   Center  Symbol       ESP      RESP
+      1    N      -0.20869151 -0.20869151
+      2    C      -0.27097822 -0.24496803
+      3    C      -0.19034002 -0.16885957
+      4    H       0.36269262  0.36269262
+      5    H       0.11224793  0.10369602
+      6    H       0.11224793  0.10369602
+      7    H       0.11224793  0.10369602
+      8    H       0.09615419  0.08887589
+      9    H       0.09615419  0.08887589
+     10    H       0.09615419  0.08887589
+     11    C       0.73256493  0.73256493
+     12    N      -0.99719193 -0.99719193
+     13    H       0.37797560  0.37797560
+     14    N      -0.72481277 -0.72481277
+     15    N      -0.93183328 -0.93183328
+     16    N      -0.90741789 -0.90741789
+     17    C       0.93939445  0.93939445
+     18    H       0.39531866  0.39531866
+     19    H       0.41413482  0.41413482
+     20    H       0.38397818  0.38397818
+Total Charge:      0.00000000  0.00000000

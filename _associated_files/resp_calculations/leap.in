@@ -1,0 +1,12 @@
+
+source leaprc.protein.fb15
+fb15 = loadamberparams frcmod.fb15
+source leaprc.gaff
+ions1lmtip3p = loadamberparams frcmod.ions1lm_1264_tip3p
+ions234lmtip3p= loadamberparams frcmod.ions234lm_1264_tip3p
+loadoff phos_amino94.lib
+
+molecule = loadmol2 metformin-ach.mol2
+loadamberparams metformin.frcmod
+saveamberparm molecule metformin.prmtop metformin.inpcrd
+quit
