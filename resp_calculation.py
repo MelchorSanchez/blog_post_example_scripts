@@ -118,7 +118,7 @@ is lower for academia. GROMACS is open source , that's why is interesting to use
 it.
 
 Here PARMED is used to perform the topology conversion but other tools like
-ACEPYPE can also be used. PARMED works as a python library, ACEPYPE
+ACPYPE can also be used. PARMED works as a python library, ACPYPE
 has to be called externally.
 """
 parm = pmd.load_file("metformin.prmtop", "metformin.inpcrd")
