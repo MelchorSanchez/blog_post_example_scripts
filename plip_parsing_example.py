@@ -70,7 +70,8 @@ for i in range(len(root.findall("./bindingsite/identifiers/longname"))):
                     #esyablished with the side chain or if there are more than
                     #one desired ligand in different chains
 interaction_types={"hydrophobic_interactions":"HI", "hydrogen_bonds":"HB", "halogen_bonds":"HalB"\
-,"water_bridges":"WB", "pi_stacks":"PS", "pi_Cation_interactions":"PC", "metal_complexes":"MC" }
+,"water_bridges":"WB", "pi_stacks":"PS", "pi_Cation_interactions":"PC", "metal_complexes":"MC", \
+"salt_bridges":"SB" }"
 with open('interactions_summary.csv', 'w') as fw:
     for key,val in interactions.items():
         for key2 in interaction_types.keys():
