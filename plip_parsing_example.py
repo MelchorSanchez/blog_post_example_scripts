@@ -67,7 +67,7 @@ for i in range(len(root.findall("./bindingsite/identifiers/longname"))):
                             interactions[int.tag+'-'+root.findall("./bindingsite/identifiers/longname")[i].text][ident]=resname+resnr+'.'+reschain
                     #there are more properties that can be parse as if the
                     #protein is the donor, in the case of HBs, if the bond is
-                    #esyablished with the side chain or if there are more than
+                    #established with the side chain or if there are more than
                     #one desired ligand in different chains
 interaction_types={"hydrophobic_interactions":"HI", "hydrogen_bonds":"HB", "halogen_bonds":"HalB"\
 ,"water_bridges":"WB", "pi_stacks":"PS", "pi_Cation_interactions":"PC", "metal_complexes":"MC", \
