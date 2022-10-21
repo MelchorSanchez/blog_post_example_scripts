@@ -113,7 +113,7 @@ call(tleap.split())
 ##Convert topology to gromacs##
 """
 Prmtop and inpcrd can be used to run Amber or NAMD simulations, but these tools
-are licenced. NAMD si free for academia. AMBER is not free but the fee
+are licenced. NAMD is free for academia. AMBER is not free but the fee
 is lower for academia. GROMACS is open source , that's why is interesting to use
 it.
 
